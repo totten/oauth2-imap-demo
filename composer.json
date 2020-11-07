@@ -1,0 +1,21 @@
+{
+    "name": "totten/oauth2-imap-demo",
+    "minimum-stability": "dev",
+    "require": {
+        "civicrm/civicrm-core": "5.32.x-dev"
+    },
+    "autoload": {
+      "psr-4": {
+        "Oauth2ImapDemo\\": ["src/"]
+      }
+    },
+    "authors": [
+        {
+            "name": "Tim Otten",
+            "email": "totten@civicrm.org"
+        }
+    ],
+    "extra": {
+        "compile-whitelist": ["civicrm/civicrm-core", "civicrm/composer-compile-lib"]
+    }
+}

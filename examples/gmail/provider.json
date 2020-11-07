@@ -1,0 +1,7 @@
+{
+  "file": "vendor/civicrm/civicrm-core/ext/oauth-client/providers/gmail.dist.json",
+  "options": {
+    "clientId": "FIXME",
+    "clientSecret": "FIXME"
+  }
+}
