@@ -73,6 +73,7 @@ if (!isset($_GET['code'])) {
   // Redirect the user to the authorization URL.
   printf("<a href='%s'>Request email access via OAuth2</a><br/>\n", htmlentities($authorizationUrl));
   printf("(URL: %s)\n", htmlentities($authorizationUrl));
+  dump(['providerDefn' => $providerDefn]);
   exit();
 
   // Check given state against previously stored one to mitigate CSRF attack
@@ -96,7 +97,12 @@ else {
   $accessToken = $provider->getAccessToken('authorization_code', [
     'code' => $_GET['code'],
   ]);
-  $resourceOwner = $provider->getResourceOwner($accessToken)->toArray();
+  try {
+    $resourceOwner = $provider->getResourceOwner($accessToken)->toArray();
+  }
+  catch (Exception $e) {
+    printf("<pre>\nERROR:\n%s\n</pre>", htmlentities($e->getTraceAsString()));
+  }
 
   $tokenRecord = [
     'access_token' => $accessToken->getToken(),
